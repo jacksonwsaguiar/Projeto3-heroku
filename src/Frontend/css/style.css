@@ -1,0 +1,139 @@
+html {
+    background-color: #F6F6F6;
+}
+
+body {
+    background-color: #F6F6F6;
+}
+
+.container {
+    background-color: #F6F6F6;
+}
+ 
+.text {
+    font-size:50px;
+    margin-left:130px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.area {
+    margin:35px 100px 30px;
+    height: 610px;
+    background-color: #F6F6F6;
+}
+ 
+.data {
+    display:flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+    border-radius:10px;
+    margin:10px 35px 40px;
+    height: 230px;
+    background-color: white;
+    border-style: outset;
+}
+ 
+.data .image {
+    width:100px;
+    height:100px;
+    border-radius:100px;
+    background-color: #C4C4C4;
+    margin-top: 10px;
+    margin-left: 40px;
+}
+ 
+.data .name {
+    width:700px;
+    color: black;
+    font-size: 50px;
+    background-color: transparent;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 117px;
+    margin-top: -75px;
+    font-weight: bolder;
+}
+ 
+.profile {
+    display:flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+    height: 150px;
+    width: 600px;
+    margin-top: 87px;
+    margin-left: -260px;
+}
+ 
+.profile div{
+    margin-top: 30px;
+    margin-left: 10px;
+    color: black;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    width: 350px;
+}
+ 
+.payment {
+    border-radius:10px;
+    margin:10px 35px 0px;
+    height: 230px;
+    background-color: white;
+    border-style: outset;
+}
+ 
+h1 {
+    font-size: 32px;
+    margin: 0px;
+    margin-left: 35px;
+    font-family: 'Montserrat', sans-serif;
+}
+ 
+.edit, .pedit {
+    margin-left: 700px;
+    color: #3468FC;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+}
+ 
+ 
+ 
+.payment-data {
+    display:flex;
+    flex-direction:column;
+    border-radius:10px;
+    margin:10px 10px 0px;
+    background-color: white;
+    height: 210px;
+}
+ 
+.payment-data div {
+    margin-top: 30px;
+    margin-left: 10px;
+    color: black;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+}
+ 
+p {
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    width: 247px;
+    margin-right: 500px;
+}
+ 
+.bi-arrow-left {
+    width: 40px;
+    height: 50px;
+}
+ 
+.bi-pencil-square {
+    margin-left: 80px;
+    margin-top: 75px;
+}
