@@ -8,7 +8,7 @@
 
 ## Web Power
 
-## Integrantes: <a href="https://www.linkedin.com/in/allan-casado-6339a9177/">Allan Casado</a>, <a href="">Giovane Andreussi</a>, <a href="https://www.linkedin.com/in/jackson-aguiar/">Jackson Aguiar</a>, <a href="https://www.linkedin.com/in/jo%C3%A3o-lucas-delistoianov-gonzalez-b0501922a/">Joâo Gonzalez</a>, <a href="https://www.linkedin.com/in/larissa-carvalho-0564ab231/">Larissa Carvalho</a>, <a href="https://www.linkedin.com/in/vitor-augusto-menten-de-barros-a17587234/">Vitor Barros</a>
+## Integrantes: <a href="https://www.linkedin.com/in/allan-casado-6339a9177/">Allan Casado</a>, Giovane Andreussi, <a href="https://www.linkedin.com/in/jackson-aguiar/">Jackson Aguiar</a>, <a href="https://www.linkedin.com/in/jo%C3%A3o-lucas-delistoianov-gonzalez-b0501922a/">João Gonzalez</a>, <a href="https://www.linkedin.com/in/larissa-carvalho-0564ab231/">Larissa Carvalho</a>, <a href="https://www.linkedin.com/in/vitor-augusto-menten-de-barros-a17587234/">Vitor Barros</a>
 
 ## Professores Orientadores: <a href="https://www.linkedin.com/in/victorbarq/">Dr. Victor Von Doom</a>, <a href="https://www.linkedin.com/in/victorbarq/">Me. Saitama</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Strange</a>, <a href="https://www.linkedin.com/in/victorbarq/">Me. Yoda</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Gero</a>
 
