@@ -6,15 +6,17 @@
 
 # Nome do Projeto
 
-## Nome do Grupo
+## Web Power
 
-## Integrantes: <a href="https://www.linkedin.com/in/victorbarq/">Goku Sayajin</a>, <a href="https://www.linkedin.com/in/victorbarq/">Saitama One</a>, <a href="https://www.linkedin.com/in/victorbarq/">Ikki de Fenix</a>, <a href="https://www.linkedin.com/in/victorbarq/">Yusuke Urameshi</a>, <a href="https://www.linkedin.com/in/victorbarq/">Roronoa Zoro</a>
+## Integrantes: <a href="https://www.linkedin.com/in/allan-casado-6339a9177/">Allan Casado</a>, Giovane Andreussi, <a href="https://www.linkedin.com/in/jackson-aguiar/">Jackson Aguiar</a>, <a href="https://www.linkedin.com/in/jo%C3%A3o-lucas-delistoianov-gonzalez-b0501922a/">João Gonzalez</a>, <a href="https://www.linkedin.com/in/larissa-carvalho-0564ab231/">Larissa Carvalho</a>, <a href="https://www.linkedin.com/in/vitor-augusto-menten-de-barros-a17587234/">Vitor Barros</a>
+
+## Professores Orientadores: <a href="https://www.linkedin.com/in/victorbarq/">Dr. Victor Von Doom</a>, <a href="https://www.linkedin.com/in/victorbarq/">Me. Saitama</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Strange</a>, <a href="https://www.linkedin.com/in/victorbarq/">Me. Yoda</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Gero</a>
 
 ## Descrição
 
 📜 Descrição curta sobre o que seu projeto faz.
 <br><br>
-Meu projeto é um exemplo de como utilizar o github.
+O projeto é uma aplicação web de pedidos de antecipação de pagamento para hotéis parceiros da empresa HURB.
 <br><br>
 <p align="center">
 <img src="https://pix4free.org/assets/library/2021-01-20/originals/game.jpg" alt="NOME DO JOGO" border="0">
@@ -24,9 +26,7 @@ Meu projeto é um exemplo de como utilizar o github.
 
 💡 De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
 <br><br>
-Meu projeto ajuda estudantes inteli a configurarem seus githubs.
-<br><br>
-May the force be with you!
+O projeto é uma aplicação web de pedidos de antecipação de pagamento para hotéis parceiros da empresa HURB. Nele, o hotel poderá entender o que é esse serviço, quais são as possibilidades de antecipação (D+2, D+7, D+15), o valor que é descontado nessa antecipação. Além disso, tem como se cadastrar na plataforma para receber esse serviço, solicitar a antecipação, informar em qual conta gostaria de receber esse valor e acompanhar essa solicitação.
 <br><br>
 
 ## 🛠 Estrutura de pastas
@@ -35,11 +35,7 @@ May the force be with you!
 |<br>
 |-->documentos<br>
   &emsp;|-->antigos<br>
-  &emsp;|Documentação.docx<br>
-|-->executáveis<br>
-  &emsp;|-->windows<br>
-  &emsp;|-->android<br>
-  &emsp;|-->HTML<br>
+  &emsp;|WAD.docx<br>
 |-->imagens<br>
 |-->src<br>
   &emsp;|-->Backend<br>
@@ -50,13 +46,11 @@ A pasta raiz contem dois arquivos que devem ser alterados:
 
 <b>README.MD</b>: Arquivo que serve como guia e explicação geral sobre seu projeto. O mesmo que você está lendo agora.
 
-Há também 4 pastas que seguem da seguinte forma:
+Há também 3 pastas que seguem da seguinte forma:
 
-<b>documentos</b>: Aqui estarão todos os documentos do projeto, mas principalmente o <b>Documentação do Sistema</b>. Há uma pasta <b>antigos</b> onde estarão todas as versões antigas da documentação.
+<b>documentos</b>: Aqui estarão todos os documentos do projeto, mas principalmente o <b>WAD</b>. Há uma pasta <b>antigos</b> onde estarão todas as versões antigas da documentação.
 
-<b>executáveis</b>: Aqui estarão todos os executáveis do jogo, prontos para rodar. Há no mínimo 3 pastas, uma para binários <b>Windows</b>, uma para binários <b>android</b> e uma para a <b>Web/HTML</b>
-
-<b>imagens</b>: Algumas imagens do jogo/sistema e logos prontos para serem utilizados e visualizados.
+<b>imagens</b>: Algumas imagens do sistema e logos prontos para serem utilizados e visualizados.
 
 <b>src</b>: Nesta pasta irá todo o código fonte do sistema, pronto para para ser baixado e modificado. Existem duas pastas, <b>Backend</b> e <b>Frintend</b> que devem conter, respectivamente, o código do servidor e o código da página web.
 
