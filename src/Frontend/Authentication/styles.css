@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: space-evenly;
+}
+body {
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+}
+.otp-input {
+  display: flex;
+  height: 60px;
+  width: 30px;
+  background-color: rgba(127, 130, 132, 0.1);
+  border-radius: 10px;
+}
