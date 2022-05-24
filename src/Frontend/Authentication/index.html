@@ -5,25 +5,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Entrar</title>
+    <link rel="stylesheet" href="../global.styles.css" />
 
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <div class="container">
-      <img src="" alt="" />
+      <img src="../Assets/hurb-logo.svg" alt="" />
       <div class="content">
-        <div class="otp-input">
-          <input type="number" maxlength="1" />
-          <input type="number" maxlength="1" />
-          <input type="number" maxlength="1" />
-          <input type="number" maxlength="1" />
-          <input type="number" maxlength="1" />
+        <div id="otp-input">
+          <input
+            class="part-code"
+            type="number"
+            onKeyPress="if(this.value.length==1) return false;"
+          />
+          <input
+            type="number"
+            class="part-code"
+            onKeyPress="if(this.value.length==1) return false;"
+          />
+          <input
+            type="number"
+            class="part-code"
+            onKeyPress="if(this.value.length==1) return false;"
+          />
+          <input
+            type="number"
+            class="part-code"
+            onKeyPress="if(this.value.length==1) return false;"
+          />
+          <input
+            type="number"
+            class="part-code"
+            onKeyPress="if(this.value.length==1) return false;"
+          />
         </div>
         <a href=""> Solicitar código </a>
       </div>
-      <button>Entrar</button>
+      <button onclick="submit()">Entrar</button>
     </div>
 
-    <script></script>
+    <script>
+      let otp = document.querySelector("#otp-input");
+
+      for (let pin of otp.children) {
+        pin.onkeyup = function (event) {
+          if (event.target.value > 0)
+            if (pin.nextElementSibling) {
+              pin.nextElementSibling.focus();
+            }
+        };
+      }
+      function submit() {
+        var code = "";
+        const values = document.getElementsByClassName("part-code");
+
+        for (let index = 0; index < values.length; index++) {
+          const element = values[index];
+
+          code += element.value;
+        }
+
+        console.log(code);
+      }
+    </script>
   </body>
 </html>
