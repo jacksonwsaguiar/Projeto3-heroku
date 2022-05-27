@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
 
-require("./routes/index")(app);
+app.use(express.json());
 
+require("./routes/index")(app);
 // app.set("view engine", "ejs");
 
 // app.get("/app", (req, res) => {
@@ -10,5 +11,4 @@ require("./routes/index")(app);
 // // res.render
 // });
 app.use(express.static("../Frontend/Dashboard"));
-app.use(express.json());
 app.listen(3333);

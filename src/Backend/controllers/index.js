@@ -6,18 +6,29 @@ exports.authenticateUser = async (req, res) => {
 };
 
 exports.createOrder = (req, res) => {
-  const { request_code, category, requested_amount, status, owner_id } =
+ 
+  const { request_code, category, requested_amount, status, hotel_id } =
     req.body;
+    console.log
   const response = services.createOrder(
     request_code,
     category,
     requested_amount,
     status,
-    owner_id
+    hotel_id
   );
   res.status(201).json(response);
 };
 
+exports.updateOwner = (req, res) => {
+  const { id, status } = req.body;
+
+  if (!status) res.status(400).json({ message: "Missing order status" });
+
+  const response = services.changeOrderStatus(id, status);
+
+  res.status(203).json(response);
+};
 exports.updateOrderStatus = (req, res) => {
   const { id, status } = req.body;
 

@@ -3,6 +3,7 @@ module.exports = (app) => {
    app.get('/authenticate/:code', Controller.authenticateUser);
    app.get('/hotels', Controller.getHotels);
    app.get('/owners', Controller.getOwners);
+   app.put('/owners', Controller.updateOwner);
 
    app.put('/orders', Controller.updateOrderStatus);
    app.post('/orders', Controller.createOrder);
