@@ -9,6 +9,18 @@ async function authenticate(code) {
 
   return data;
 }
+async function getLastsBooks(hotel_id) {
+  const data = await database.query(
+    `SELECT * FROM (
+      SELECT * FROM books WHERE hotel_id=? ORDER BY id DESC LIMIT 4
+    ) as r ORDER BY id`,
+    [hotel_id]
+  );
+
+  // if (!data) return "user not found";
+
+  return data;
+}
 
 async function getHotels(page = 1) {
   const offset = (page - 1) * 20;
@@ -115,4 +127,5 @@ module.exports = {
   authenticate,
   getOrdersByStatus,
   getOwners,
+  getLastsBooks,
 };

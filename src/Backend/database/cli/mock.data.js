@@ -6,7 +6,7 @@ db.run(`INSERT INTO owner (name, access_code, email) values
 console.log("owners data generated");
 
 db.run(
-    `
+  `
     INSERT INTO hotel (name, capacity, budget, city, state, address, owner_id) values 
     ('Heathcote-Beer', 8155, 4735, 'San Diego', 'California', '3582 Bultman Crossing', 1),
     ('Emard-Green', 4909, 7316, 'Santa Cruz', 'California', '2 Fairview Center', 1),
@@ -18,5 +18,25 @@ db.run(
     ('Lang-Quitzon', 2917, 8645, 'Petaluma', 'California', '9618 Corben Park', 2),
     ('Koepp-Nader', 3782, 4300, 'Fresno', 'California', '3 Homewood Place', 2);
     `
-    );
-    console.log("hotels data generated");
+);
+console.log("hotels data generated");
+
+db.run(
+  `
+    INSERT INTO books (
+    started,
+    ended,
+    value,
+    customer_name,
+    hotel_id)
+    values 
+    ('22-05-2021 15:22:00','24-05-2021 15:22:00',4000,'robert tes', 2 ),
+    ('22-05-2021 15:22:00','24-05-2021 15:22:00',2000,'robert tes 1', 1 ),
+    ('22-05-2021 15:22:00','24-05-2021 15:22:00',5000,'robert tes 2', 5 ),
+    ('22-05-2021 15:22:00','24-05-2021 15:22:00',1000,'robert tes 3', 2 ),
+    ('22-05-2021 15:22:00','24-05-2021 15:22:00',3000,'robert tes 4', 2 ),
+    ('22-05-2021 15:22:00','24-05-2021 15:22:00',500,'robert tes 5', 1 );
+    
+    `
+);
+console.log("books data generated");

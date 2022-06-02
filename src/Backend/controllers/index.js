@@ -4,6 +4,10 @@ exports.authenticateUser = async (req, res) => {
   const response = await services.authenticate(req.params.code);
   res.status(200).json(response);
 };
+exports.getLastsBooks = async (req, res) => {
+  const response = await services.getLastsBooks(req.params.code);
+  res.status(200).json(response);
+};
 
 exports.createOrder = (req, res) => {
  
@@ -52,10 +56,12 @@ exports.getOrdersByStatus = async (req, res) => {
 };
 
 exports.getHotels = async (req, res) => {
+  console.log(req.query)
   const response = await services.getHotels();
   console.log(response);
   res.status(200).json(response);
 };
+
 exports.getOwners = async (req, res) => {
   const response = await services.getOwners();
   console.log(response);
