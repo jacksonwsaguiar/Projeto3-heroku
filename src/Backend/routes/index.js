@@ -5,8 +5,8 @@ module.exports = (app) => {
    app.get('/owners', Controller.getOwners);
    app.put('/owners', Controller.updateOwner);
 
-   app.get('/books/lasts', Controller.getLastsBooks);
-   // app.get('/dashboard', Controller.getHurbDashboard);
+   app.get('/books/lasts/:id', Controller.getLastsBooks);
+   app.get('/dashboard', Controller.getHurbDashboard);
 
    app.put('/orders', Controller.updateOrderStatus);
    app.post('/orders', Controller.createOrder);

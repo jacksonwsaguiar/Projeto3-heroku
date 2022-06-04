@@ -4,8 +4,14 @@ exports.authenticateUser = async (req, res) => {
   const response = await services.authenticate(req.params.code);
   res.status(200).json(response);
 };
+
 exports.getLastsBooks = async (req, res) => {
-  const response = await services.getLastsBooks(req.params.code);
+  const response = await services.getLastsBooks(req.params.id);
+  res.status(200).json(response);
+};
+
+exports.getHurbDashboard= async (req, res) => {
+  const response = await services.hurbDashboard();
   res.status(200).json(response);
 };
 

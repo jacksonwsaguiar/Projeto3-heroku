@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <a href="file:///C:/Development/hub-project/Dashboard/index.html">
+    <a href="../Dashboard/index.html">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
@@ -29,7 +29,7 @@
     <div class="container">
       <div class="top-card">
         <h2>Seus dados</h2>
-        <button>
+        <button id="edit-button-profile" onclick="handleProfileEdit()">
           <span> Editar </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,6 +44,7 @@
             />
           </svg>
         </button>
+        <button id="save-button-profile" style="display: none;">Salvar</button>
       </div>
       <div class="custom-card">
         <svg
@@ -61,18 +62,15 @@
           />
         </svg>
         <div class="info-group">
-          <span>XXXXXX</span>
-          <span>XXXXX</span>
-          <span>XXXXXXX</span>
-          <span>XXXXXXX</span>
-          <span>XXXXXXX</span>
-          <span>XXXXXXX</span>
+          <input type="text" id="name" value="Nome" readonly />
+
+          <input type="text" id="email" value="Email" readonly />
         </div>
       </div>
       <br />
-      <div class="top-card">
+      <!-- <div class="top-card">
         <h2>Pagamentos</h2>
-        <button>
+        <button >
           <span> Editar </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +108,7 @@
           <span>XXXXXXX</span>
           <span>XXXXXXX</span>
         </div>
-      </div>
+      </div> -->
     </div>
     <script type="text/javascript" src="./script.js"></script>
   </body>
