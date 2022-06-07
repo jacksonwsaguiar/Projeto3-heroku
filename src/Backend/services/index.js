@@ -248,6 +248,15 @@ function changeOrderStatus(id, status) {
   );
 }
 
+function updateOwner(id, name, email) {
+  return database.run(
+    `UPDATE owner
+    SET name=?, email=?
+    WHERE id=?;`,
+    [name, email, id]
+  );
+}
+
 module.exports = {
   createOrder,
   getHotels,
@@ -258,4 +267,5 @@ module.exports = {
   getOwners,
   getLastsBooks,
   hurbDashboard,
+  updateOwner
 };

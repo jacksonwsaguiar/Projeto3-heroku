@@ -10,16 +10,15 @@ exports.getLastsBooks = async (req, res) => {
   res.status(200).json(response);
 };
 
-exports.getHurbDashboard= async (req, res) => {
+exports.getHurbDashboard = async (req, res) => {
   const response = await services.hurbDashboard();
   res.status(200).json(response);
 };
 
 exports.createOrder = (req, res) => {
- 
   const { request_code, category, requested_amount, status, hotel_id } =
     req.body;
-    console.log
+  console.log;
   const response = services.createOrder(
     request_code,
     category,
@@ -31,14 +30,13 @@ exports.createOrder = (req, res) => {
 };
 
 exports.updateOwner = (req, res) => {
-  const { id, status } = req.body;
+  const { id, name, email } = req.body;
 
-  if (!status) res.status(400).json({ message: "Missing order status" });
-
-  const response = services.changeOrderStatus(id, status);
+  const response = services.updateOwner(id, name, email);
 
   res.status(203).json(response);
 };
+
 exports.updateOrderStatus = (req, res) => {
   const { id, status } = req.body;
 
@@ -62,7 +60,7 @@ exports.getOrdersByStatus = async (req, res) => {
 };
 
 exports.getHotels = async (req, res) => {
-  console.log(req.query)
+  console.log(req.query);
   const response = await services.getHotels();
   console.log(response);
   res.status(200).json(response);
