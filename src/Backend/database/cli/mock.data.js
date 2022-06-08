@@ -23,7 +23,7 @@ console.log("hotels data generated");
 
 db.run(
   `
-    INSERT INTO books (
+    INSERT INTO book (
     started,
     ended,
     value,

@@ -139,9 +139,9 @@ async function hurbDashboard() {
   };
 }
 async function getLastsBooks(hotel_id) {
-  const data = await database.query(
+  const data = await database.queryMany(
     `SELECT * FROM (
-      SELECT * FROM books WHERE hotel_id=? ORDER BY id DESC LIMIT 4
+      SELECT * FROM book WHERE hotel_id=? ORDER BY id DESC LIMIT 4
     ) as r ORDER BY id`,
     [hotel_id]
   );
