@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../global.styles.css" />
   </head>
-  <body onload="getDataResponsiveTable(); getDataTable(); getDataHotels();">
+  <body onload="getDataResponsiveTable(); getDataTable(); getDataHotels(); getBudgetHotels(); reserva1(); reserva2(); reserva3(); reserva4();">
     <div
       class="modal fade modal-introduction"
       id="staticBackdrop"
@@ -286,24 +286,24 @@
       <div class="custom-row">
         <div class="analystics-data col content">
           <h5>Saldo disponivel</h5>
-          <h1>R$ 24.000,00</h1>
+          <h1 id="saldo">R$ 24.000,00</h1>
           <h5>Ultimas reservas</h5>
           <div class="list">
             <div class="item">
               <div></div>
-              <h6>XX/XX/XXXX - XXXXXXX</h6>
+              <h6 id="reserva1">XX/XX/XXXX - XXXXXXX</h6>
             </div>
             <div class="item">
               <div></div>
-              <h6>XX/XX/XXXX - XXXXXXX</h6>
+              <h6 id="reserva2">XX/XX/XXXX - XXXXXXX</h6>
+            </div>
+            <div class="item">
+              <div ></div>
+              <h6 id="reserva3">XX/XX/XXXX - XXXXXXX</h6>
             </div>
             <div class="item">
               <div></div>
-              <h6>XX/XX/XXXX - XXXXXXX</h6>
-            </div>
-            <div class="item">
-              <div></div>
-              <h6>XX/XX/XXXX - XXXXXXX</h6>
+              <h6 id="reserva4">XX/XX/XXXX - XXXXXXX</h6>
             </div>
           </div>
         </div>

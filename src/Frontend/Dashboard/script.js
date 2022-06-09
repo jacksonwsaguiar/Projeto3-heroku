@@ -181,3 +181,43 @@ async function getDataHotels() {
   }
 }
 
+// consumo de API 
+async function getBudgetHotels() {
+  await fetch("http://localhost:3333/hotels").then(response => response.json())
+  .then(data => saldo.textContent = 'R$ ' + data.details.bugetTotal.totalBudget)
+
+}
+
+async function reserva1() {
+  await fetch("http://localhost:3333/orders").then((res) => res.json()).then((response) => {
+    const orders = response.data
+    console.log(orders)
+
+    document.querySelector("#reserva1").innerHTML = orders[0]["created_at"]
+  });
+}
+
+async function reserva2() {
+  await fetch("http://localhost:3333/orders").then((res) => res.json()).then((response) => {
+    const orders = response.data
+    console.log(orders)
+
+    document.querySelector("#reserva2").innerHTML = orders[1]["created_at"]
+  });
+}
+async function reserva3() {
+  await fetch("http://localhost:3333/orders").then((res) => res.json()).then((response) => {
+    const orders = response.data
+    console.log(orders)
+
+    document.querySelector("#reserva3").innerHTML = orders[2]["created_at"]
+  });
+}
+async function reserva4() {
+  await fetch("http://localhost:3333/orders").then((res) => res.json()).then((response) => {
+    const orders = response.data
+    console.log(orders)
+
+    document.querySelector("#reserva4").innerHTML = orders[3]["created_at"]
+  });
+}
