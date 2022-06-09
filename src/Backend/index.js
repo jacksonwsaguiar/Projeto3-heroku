@@ -12,5 +12,11 @@ require("./routes/index")(app);
 //   res.render(express.static("../Frontend/Dashboard").toString());
 // // res.render
 // });
-app.use(express.static("../Frontend/Dashboard"));
+
+app.use(express.static("views/global.styles.css"));
+
+app.use("/", express.static("views/Dashboard"));
+app.use("/profile", express.static("views/Profile"));
+app.use("/hurb", express.static("views/HurbDashboard"));
+
 app.listen(3333);
