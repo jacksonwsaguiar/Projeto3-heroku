@@ -436,3 +436,30 @@ header .profile div {
   display: flex;
   align-items: center;
 }
+
+
+#btnradio1 {
+  width: 45px;
+  height: 40px;
+}
+
+#btnradio2 {
+  margin-left: 42px;
+  width: 45px;
+  height: 40px;
+}
+
+#btnradio3 {
+  margin-left: 92px;
+  width: 45px;
+  height: 40px;
+}
+
+.item input {
+  width: 110px;
+  height: 130px;
+}
+
+#hotels {
+  font-size: 15px;
+}
