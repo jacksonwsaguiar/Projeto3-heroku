@@ -18,5 +18,27 @@ function submit() {
     code += element.value;
   }
 
-  console.log(code);
-}
+  $.ajax({
+    url:'/authenticate/' + code, 
+    type: 'GET',
+    success: data => {
+      if (data == "user not found") {
+        alert('Código Inválido');
+        }
+      else {
+
+       
+        console.log(data);
+        localStorage.setItem('access_code', data.access_code);
+        localStorage.setItem('created_at', data.created_at);
+        localStorage.setItem('email', data.email);
+        localStorage.setItem('id', data.id);
+        localStorage.setItem('name', data.name);
+
+        window.location.href = '../Dashboard/index.html';
+     }
+    }
+});
+};
+
+
