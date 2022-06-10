@@ -6,7 +6,7 @@ module.exports = (app) => {
    app.put('/owners', Controller.updateOwner);
 
    app.get('/books/lasts/:id', Controller.getLastsBooks);
-   app.get('/dashboard', Controller.getHurbDashboard);
+   app.get('/hurb-analytics', Controller.getHurbDashboard);
 
    app.put('/orders', Controller.updateOrderStatus);
    app.post('/orders', Controller.createOrder);

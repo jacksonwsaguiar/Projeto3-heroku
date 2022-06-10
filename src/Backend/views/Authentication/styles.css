@@ -1,0 +1,86 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.container .content a {
+  text-decoration: none;
+  font-size: 18px;
+
+  font-weight: 600;
+  color: #3468fc;
+  margin-right: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  .container img{
+    width: 22rem;
+  }
+  .container .content {
+    width: 90%;
+  }
+  #otp-input input {
+    width: 58px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .container img{
+    width: 30rem;
+  }
+  #otp-input input {
+    width: 4rem;
+  }
+  .container .content {
+    width: 27%;
+  }
+}
+.container .content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.container button {
+  cursor: pointer;
+  width: 300px;
+  height: 54px;
+  border: none;
+  border: none;
+  color: #fff;
+  background: #3468fc;
+  border-radius: 10px;
+  font-size: 20px;
+}
+body {
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+}
+#otp-input input {
+  height: 80px;
+  /* width: 4rem; */
+  background-color: rgba(127, 130, 132, 0.1);
+  border-radius: 10px;
+  font-size: 30px;
+  text-align: center;
+  border: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+#otp-input {
+  margin-bottom: 15px;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}

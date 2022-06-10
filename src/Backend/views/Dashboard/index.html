@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="../global.styles.css" />
+  </head>
+  <body
+    onload="getDataResponsiveTable(); getDataTable(); getDataHotels(); getBudgetHotels(); reserva1(); reserva2(); reserva3(); reserva4();"
+  >
+    <div
+      class="modal fade modal-introduction"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" id="modalContent">
+          <div class="modal-body">
+            <div
+              id="introductionCarousel"
+              class="carousel slide"
+              data-bs-ride="carousel"
+              data-bs-interval="false"
+            >
+              <div class="carousel-inner">
+                <div class="carousel-item active linear-bg1">
+                  <div class="introduction-modal">
+                    <img src="../assets/image1.svg" alt="illustration 1" />
+                    <h1>Lorem ipsum neque urna vel facilisis eros risus</h1>
+                  </div>
+                  <button onclick="nextSlider()">Avançar</button>
+                </div>
+                <div class="carousel-item linear-bg2">
+                  <div class="introduction-modal">
+                    <img src="../assets/image2.svg" alt="illustration 2" />
+                    <h1>Lorem ipsum neque urna vel facilisis eros risus</h1>
+                  </div>
+                  <button onclick="nextSlider()">Avançar</button>
+                </div>
+                <div class="carousel-item linear-bg3">
+                  <div class="introduction-modal">
+                    <img src="../assets/image3.svg" alt="illustration 3" />
+                    <h1>Lorem ipsum neque urna vel facilisis eros risus</h1>
+                  </div>
+                  <button onclick="nextSlider()">Vamos nessa!</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade modal-request-payment"
+      id="exampleModal"
+      tabindex="-1"
+      aria-hidden="true"
+      data-bs-toggle="modal-solicitation"
+      data-bs-backdrop="static"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div
+              id="carouselExampleControls"
+              class="carousel slide"
+              data-bs-ride="carousel"
+              data-bs-interval="false"
+            >
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <h2>Para qual hotel você deseja solicitar?</h2>
+                  <div class="list-hotels">
+                    <div class="item">
+                      <div></div>
+                      <h6>Hotel A</h6>
+                    </div>
+                    <div class="item">
+                      <div></div>
+                      <h6>Hotel A</h6>
+                    </div>
+                    <div class="item">
+                      <div></div>
+                      <h6>Hotel A</h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <h2>Quanto você deseja antecipar?</h2>
+                  <h6 id="budget">
+                    Valor disponivel para solicitação: 100.000,00
+                  </h6>
+                  <div class="flex-content">
+                    <input
+                      style="border: none; width: 200px; font-size: 40px"
+                      type="number"
+                      placeholder="R$ 90.000"
+                      id="valor"
+                    />
+                    <span>
+                      <p>Equivalente a 12 reservas</p>
+                      <div class="books-list">
+                        <div class="item">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-check-circle-fill"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+                            />
+                          </svg>
+                          <h6>Reserva 1</h6>
+                        </div>
+                        <div class="item">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-check-circle-fill"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+                            />
+                          </svg>
+                          <h6>Reserva 1</h6>
+                        </div>
+                        <div class="item">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-check-circle-fill"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+                            />
+                          </svg>
+                          <h6>Reserva 1</h6>
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                </div>
+                <div id="taxes" class="carousel-item">
+                  <div class="option-transaction">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      <input
+                        type="radio"
+                        class="btn-check"
+                        name="btnradio"
+                        id="btnradio1"
+                        autocomplete="off"
+                        checked
+                      />
+                      <label
+                        class="btn btn-outline-primary custom-radio"
+                        for="btnradio1"
+                        onclick="D2()"
+                        >D2</label
+                      >
+
+                      <input
+                        type="radio"
+                        class="btn-check"
+                        name="btnradio"
+                        id="btnradio2"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary custom-radio"
+                        for="btnradio2"
+                        onclick="D7()"
+                        >D7</label
+                      >
+
+                      <input
+                        type="radio"
+                        class="btn-check"
+                        name="btnradio"
+                        id="btnradio3"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-primary custom-radio"
+                        for="btnradio3"
+                        onclick="D15()"
+                        >D15</label
+                      >
+                    </div>
+
+                    <p>
+                      Lorem ipsum mattis porttitor eleifend tellus varius quam
+                      pretium dolor porttitor hac convallis vitae curae morbi.
+                    </p>
+                    <h5>Valor a receber dia 25/01/2023</h5>
+                    <h1 id="value">R$ 88.200,00</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="close"
+              class="btn btn-secondary next-button"
+              data-bs-target="#carouselExampleControls"
+              data-bs-slide="next"
+              onclick="getBudget()"
+            >
+              Avançar
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal-solicitation"
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <header>
+      <h1>Dashboard</h1>
+
+      <div class="profile">
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-person-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+            />
+          </svg>
+          <h4 id="profile-name">Rogerio Dantas</h4>
+        </div>
+        <a href="/profile">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-sliders"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"
+            />
+          </svg>
+        </a>
+      </div>
+    </header>
+    <main>
+      <div class="custom-row">
+        <div class="analystics-data col content">
+          <h5>Saldo disponivel</h5>
+          <h1 id="saldo">R$ 24.000,00</h1>
+          <h5>Ultimas reservas</h5>
+          <div class="list">
+            <div class="item">
+              <div></div>
+              <h6 id="reserva1">XX/XX/XXXX - XXXXXXX</h6>
+            </div>
+            <div class="item">
+              <div></div>
+              <h6 id="reserva2">XX/XX/XXXX - XXXXXXX</h6>
+            </div>
+            <div class="item">
+              <div></div>
+              <h6 id="reserva3">XX/XX/XXXX - XXXXXXX</h6>
+            </div>
+            <div class="item">
+              <div></div>
+              <h6 id="reserva4">XX/XX/XXXX - XXXXXXX</h6>
+            </div>
+          </div>
+        </div>
+        <div class="custom-card col content">
+          <h2>Antecipação de pagamento</h2>
+          <div class="card-content">
+            Lorem ipsum neque urna vel facilisis eros risus, fames libero ipsum
+            consectetur a eros sem dictum, quam phasellus suscipit proin
+            ultrices viverra. erat donec pellentesque nec tincidunt donec quis
+            venenatis dui pellentesque, inceptos molestie dictumst.
+          </div>
+          <button
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            onclick="getHotels()"
+          >
+            Solicitar
+          </button>
+        </div>
+      </div>
+      <div class="custom-row">
+        <div class="history col content">
+          <h5>Historico de solicitações</h5>
+          <div class="table-container">
+            <table class="custom-table">
+              <tr>
+                <th>Tipo</th>
+                <th>Data</th>
+                <th>Valor solicitado</th>
+                <th>Valor total</th>
+              </tr>
+            </table>
+          </div>
+
+          <table class="responsive-table"></table>
+        </div>
+        <di v class="hotels col content">
+          <h3>Hoteis</h3>
+          <!-- <div class="input-search">
+            <input type="text" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-search"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+              />
+            </svg>
+          </div> -->
+          <div class="hotels-list"></div>
+        </di>
+      </div>
+    </main>
+    <script type="text/javascript" src="./script.js"></script>
+    <script type="text/javascript" src="./solicitationCard.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

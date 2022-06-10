@@ -1,0 +1,84 @@
+.custom-card svg {
+  width: 100px;
+  /* background-color: #2a2a72; */
+  color: #3468fc;
+}
+.custom-card {
+  background: #fff;
+  height: 200px;
+  border-radius: 10px;
+  padding: 10px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 3px 15px 0px; */
+  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 7px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+body {
+  background: #f6f6f6;
+}
+a {
+  text-decoration: none;
+  /* background-color: #3468fc; */
+  color: #3468fc;
+  margin: 10px;
+}
+.top-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  margin-bottom: 10px;
+}
+.info-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 85%;
+  gap: 30px;
+}
+.info-group input{
+  border: none;
+  background-color: #f6f6f6;
+  color: #000;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+.container {
+  /* box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px; */
+  width: 80%;
+  /* border: 1px solid rgba(100, 100, 111, 0.2); */
+  padding: 15px;
+  border-radius: 5px;
+  background: #fff;
+  margin: 0 auto;
+  margin-top: 14px;
+}
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+#save-button-profile{
+  background-color: #3468fc;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+h2 {
+  margin: 0;
+  color: #3468fc;
+}
+@media only screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+  .custom-card svg {
+    margin-right: 20px;
+  }
+  .custom-card {
+    padding: 10px 30px;
+  }
+}
