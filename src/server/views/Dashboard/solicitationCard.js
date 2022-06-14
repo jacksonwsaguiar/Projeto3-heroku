@@ -1,6 +1,7 @@
 var hotelId;
 var hotelBudget;
 
+
 // Getting total budget from database
 function getBudget(totalBudget) {
     const url = 'http://localhost:3333/hotels'
@@ -14,6 +15,8 @@ function getBudget(totalBudget) {
 
     const divTaxes = document.querySelector("#taxes");
   
+      document.querySelector("#books").hidden = true;
+    
     // Creating a new order only in the last modal
     if (divTaxes.classList.contains('active')) {
         createOrder(newOrder);
@@ -37,6 +40,7 @@ function getBudget(totalBudget) {
       $("#carouselExampleControls").carousel(1);
     }
     else {
+      getBooks();
       return budget
     }
   }
@@ -163,3 +167,90 @@ function getHotelId(id) {
   $(this).css('background-color', '#3468fc');
 });
 } 
+
+function getBooks() {
+    const url = 'http://localhost:3333/books/lasts/' + hotelId
+  
+    var bookValues = [];
+  
+    fetch(url)
+    .then(response => response.json())
+    .then(data => data.forEach(element => {
+        bookValues.push(element.value)
+      }))
+      .catch(error => console.error(error))
+
+      
+      var budget = document.querySelector("#valor");
+      var textBooks = '';
+
+      budget.addEventListener("keypress", function(event) {
+        // If the user presses the "Enter" key on the keyboard
+        if (event.key === "Enter") {
+          // Cancel the default action, if needed
+          event.preventDefault();
+          // Trigger the button element with a click
+          budget = document.querySelector("#valor").value
+          document.querySelector("#books").hidden = false;
+          textBooks = ''
+          books1 = Math.floor(budget / bookValues[0]);
+          books2 = Math.floor(budget / bookValues[1]);
+
+          if (budget % bookValues[0] == 0) {
+            document.querySelector("#books").innerHTML = 'Equivalente a ' + books1 + ' reserva(s) de R$ ' + bookValues[0] + ',00'
+
+            for (i = 0; i < books1; i++) {
+              textBooks += '<div class="item">'
+                textBooks += '<svg'
+                  textBooks += 'xmlns="http://www.w3.org/2000/svg"'
+                  textBooks += 'width="16"'
+                  textBooks += 'height="16"'
+                  textBooks += 'fill="currentColor"'
+                  textBooks += 'class="bi bi-check-circle-fill"'
+                  textBooks += 'viewBox="0 0 16 16"'
+                textBooks += '>'
+                  textBooks += '<path'
+                    textBooks += 'd="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"'
+                  textBooks += '/>'
+                textBooks += '</svg>'
+                textBooks += '<h6>Reserva 1</h6>'
+              textBooks += '</div>'
+
+              document.querySelector(".books-list").innerHTML = textBooks;
+            }
+          }
+
+          else {
+            if (budget % bookValues[1] == 0) {
+              document.querySelector("#books").innerHTML = 'Equivalente a ' + books2 + ' reserva(s) de R$ ' + bookValues[1] + ',00'
+  
+              for (i = 0; i < books2; i++) {
+                textBooks += '<div class="item">'
+                  textBooks += '<svg'
+                    textBooks += 'xmlns="http://www.w3.org/2000/svg"'
+                    textBooks += 'width="16"'
+                    textBooks += 'height="16"'
+                    textBooks += 'fill="currentColor"'
+                    textBooks += 'class="bi bi-check-circle-fill"'
+                    textBooks += 'viewBox="0 0 16 16"'
+                  textBooks += '>'
+                    textBooks += '<path'
+                      textBooks += 'd="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"'
+                    textBooks += '/>'
+                  textBooks += '</svg>'
+                  textBooks += '<h6>Reserva 1</h6>'
+                textBooks += '</div>'
+  
+                document.querySelector(".books-list").innerHTML = textBooks;
+              }
+            }
+
+            else {
+              window.alert("Reservas incompatíveis com o valor solicitado");
+              document.querySelector("#books").hidden = true;
+            }
+          }
+        }
+      });
+      
+}
