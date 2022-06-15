@@ -185,16 +185,14 @@ function getBooks() {
       var textBooks = '';
 
       budget.addEventListener("keypress", function(event) {
-        // If the user presses the "Enter" key on the keyboard
         if (event.key === "Enter") {
-          // Cancel the default action, if needed
           event.preventDefault();
-          // Trigger the button element with a click
           budget = document.querySelector("#valor").value
           document.querySelector("#books").hidden = false;
           textBooks = ''
           books1 = Math.floor(budget / bookValues[0]);
           books2 = Math.floor(budget / bookValues[1]);
+          books3 = Math.floor(budget / bookValues[2]);
 
           if (budget % bookValues[0] == 0) {
             document.querySelector("#books").innerHTML = 'Equivalente a ' + books1 + ' reserva(s) de R$ ' + bookValues[0] + ',00'
@@ -238,7 +236,7 @@ function getBooks() {
                       textBooks += 'd="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"'
                     textBooks += '/>'
                   textBooks += '</svg>'
-                  textBooks += '<h6>Reserva 1</h6>'
+                  textBooks += '<h6>Reserva 2</h6>'
                 textBooks += '</div>'
   
                 document.querySelector(".books-list").innerHTML = textBooks;
@@ -246,8 +244,41 @@ function getBooks() {
             }
 
             else {
-              window.alert("Reservas incompatíveis com o valor solicitado");
-              document.querySelector("#books").hidden = true;
+              if (budget % bookValues[1] == 0) {
+                document.querySelector("#books").innerHTML = 'Equivalente a ' + books2 + ' reserva(s) de R$ ' + bookValues[1] + ',00'
+    
+                for (i = 0; i < books2; i++) {
+                  textBooks += '<div class="item">'
+                    textBooks += '<svg'
+                      textBooks += 'xmlns="http://www.w3.org/2000/svg"'
+                      textBooks += 'width="16"'
+                      textBooks += 'height="16"'
+                      textBooks += 'fill="currentColor"'
+                      textBooks += 'class="bi bi-check-circle-fill"'
+                      textBooks += 'viewBox="0 0 16 16"'
+                    textBooks += '>'
+                      textBooks += '<path'
+                        textBooks += 'd="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"'
+                      textBooks += '/>'
+                    textBooks += '</svg>'
+                    textBooks += '<h6>Reserva 3</h6>'
+                  textBooks += '</div>'
+    
+                  document.querySelector(".books-list").innerHTML = textBooks;
+                }
+              }
+
+              else {
+                if (hotelId == 3 || hotelId == 4) {
+                  window.alert("Não há reservas para este hotel");
+                  document.querySelector("#books").hidden = true;
+                }
+                else {
+                  window.alert("Valor de reservas incompatíveis com o valor solicitado");
+                  document.querySelector("#books").hidden = true;
+                }
+                
+              }
             }
           }
         }
