@@ -14,7 +14,7 @@ async function hurbDashboard() {
     `SELECT SUM(requested_amount) as totalValue,COUNT(*) as totalOrders FROM orders WHERE category='D2' `
   );
   const D2hotel = await database.queryMany(
-    `select hotel_id, COUNT(hotel_id) AS MOST_FREQUENT
+    `select COUNT(hotel_id) AS MOST_FREQUENT
     from orders WHERE category='D2'
     GROUP BY hotel_id
     ORDER BY COUNT(hotel_id) DESC `
@@ -39,17 +39,24 @@ async function hurbDashboard() {
   );
 
   const averages = {
-    lastMonth: "15.000",
-    currentMonth: "10.000",
-    anualMedia: "22.000",
+    lastMonth: "15000",
+    currentMonth: "10000"
   };
 
+  const ranking =   await database.queryMany(
+    `select * from hotel LIMIT 6`
+  );
+
+
   D2.averages = averages;
-  D2.rank = D2hotel;
+  // D2.rank = D2hotel;
+  D2.rank = ranking;
   D7.averages = averages;
-  D7.rank = D7hotel;
+  // D7.rank = D7hotel;
+  D7.rank = ranking;
   D15.averages = averages;
-  D15.rank = D15hotel;
+  // D15.rank = D15hotel;
+  D15.rank = ranking;
 
   D2.payments = [
     {
@@ -267,5 +274,5 @@ module.exports = {
   getOwners,
   getLastsBooks,
   hurbDashboard,
-  updateOwner
+  updateOwner,
 };

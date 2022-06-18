@@ -173,6 +173,9 @@ main .card .data .content-region-list .panel {
 .card-ranking + .card-ranking{
   margin-top: 10px;
 }
+.card-ranking .right-side span:nth-child(1){
+margin-right: 10px;
+}
 .card-ranking {
   background-color: rgba(127, 130, 132, 0.1);
   color: #444;
@@ -182,6 +185,7 @@ main .card .data .content-region-list .panel {
   text-align: left;
   outline: none;
   font-size: 14px;
+  max-width: 450px;
   transition: 0.4s;
   display: flex;
   justify-content: space-between;
