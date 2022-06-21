@@ -4,6 +4,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./index.js",
+    "build": "grunt dist",
+    "postinstall": "./node_modules/bower/bin/bower install && npm run build",
     "database:start": "node ./database/cli/start.js",
     "database:mock": "node ./database/cli/mock.data.js",
     "database:show": "node ./database/cli/show.data.js",
