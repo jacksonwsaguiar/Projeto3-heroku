@@ -10,7 +10,7 @@ app.use(cors());
 require("./routes/index")(app);
 
 app.use("/", express.static("views"));
-app.get("/dashboard", express.static("/Dashboard"));
+app.get("/dashboard", express.static("./views/Dashboard/index.html"));
 app.get("/profile", express.static("/Profile"));
 app.get("/hurbcontrol", express.static("/HurbControl"));
 app.get("/authentication", express.static("/Authentication"));
