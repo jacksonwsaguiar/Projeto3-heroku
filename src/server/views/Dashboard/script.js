@@ -1,3 +1,5 @@
+var hotelId;
+
 var introductionModal = new bootstrap.Modal(
   document.getElementById("staticBackdrop"),
   {
@@ -36,7 +38,8 @@ function nextSlider() {
   }
 }
 
-async function getDataTable() {
+async function getDataTableAll() {
+
   const res = await fetch("http://localhost:3333/orders")
   const data = await res.json()
   const orders = await data.data
@@ -71,6 +74,55 @@ async function getDataTable() {
     tr.appendChild(td_totalamount)
     document.querySelector(".custom-table").appendChild(tr)
   }
+}
+
+async function getDataTable() {
+  document.querySelector(".custom-table").innerHTML = '<tr><th>Tipo</th><th>Data</th><th>Valor solicitado</th><th>Valor total</th></tr>';
+
+  const res = await fetch("http://localhost:3333/orders")
+  const data = await res.json()
+  const orders = await data.data
+
+  var ordersHotel = [];
+
+  console.log(orders)
+
+  for(let i=0; i < orders.length; i++) {
+    if (orders[i]["hotel_id"] == hotelId) {
+      ordersHotel.push(orders[i]);
+    }
+  }
+
+  for(let i=0; i < ordersHotel.length; i++) {
+    let tr = document.createElement("tr")
+    
+    let td_category = document.createElement("td")
+    td_category.innerHTML = ordersHotel[i]["category"]
+    
+    let td_data = document.createElement("td")
+    td_data.innerHTML = ordersHotel[i]["created_at"].split(" ")[0]
+
+    let td_amount = document.createElement("td")
+    td_amount.innerHTML = `R$ ${ordersHotel[i]["requested_amount"]}`
+
+    let td_totalamount = document.createElement("td")
+    if(ordersHotel[i]["category"] === "D2") {
+      td_totalamount.innerHTML = `R$ ${ordersHotel[i]["requested_amount"] * 0.88}`
+    } else if(ordersHotel[i]["category"] === "D7") {
+      td_totalamount.innerHTML = `R$ ${ordersHotel[i]["requested_amount"] * 0.91}`
+    } else {
+      td_totalamount.innerHTML = `R$ ${ordersHotel[i]["requested_amount"] * 0.94}`
+    }
+    
+    
+    tr.appendChild(td_category)
+    tr.appendChild(td_data)
+    tr.appendChild(td_amount)
+    tr.appendChild(td_totalamount)
+    document.querySelector(".custom-table").appendChild(tr)
+    
+  }
+  ordersHotel = [];
 }
 
 
@@ -162,62 +214,67 @@ async function getDataHotels() {
   const hotels = await data.data
 
   let ownerId = 1
+  var text = '';
 
   for(let i = 0; i < hotels.length; i++) {
     if(hotels[i].owner_id === ownerId) {
-      let div = document.createElement("div")
-      div.className = "item"
+      text += `<div id="hotel ${hotels[i].id}" class="item" onclick="getHotelId(this.id); getDataTable(); getBudgetHotels(); getLastBooks()">`
+        text += '<div></div>'
+        text += '<h4 id="hotels">' + hotels[i].name + '</h4>'
+      text += '</div>'
+      document.querySelector(".hotels-list").innerHTML = text;
+
+      //let div = document.createElement("div")
+      //div.className = "item"
   
-      let divPhoto = document.createElement("div")
+      //let divPhoto = document.createElement("div")
   
-      let hotelName = document.createElement("h4")
-      hotelName.innerHTML = hotels[i].name
+      //let hotelName = document.createElement("h4")
+      //hotelName.innerHTML = hotels[i].name
   
-      div.appendChild(divPhoto)
-      div.appendChild(hotelName)
+      //div.appendChild(divPhoto)
+      //div.appendChild(hotelName)
   
-      document.querySelector(".hotels-list").appendChild(div)
+      //document.querySelector(".hotels-list").appendChild(div)
     }
   }
 }
 
+// Getting hotel_id and changing background color of selected hotel
+function getHotelId(id) {
+  hotelId = id.split(' ')[1];
+  var hotelsList = $('.item');
+  hotelsList.click(function() {
+    hotelsList.css('background-color', 'rgba(127, 130, 132, 0.1)');
+    $(this).css('background-color', '#3468fc');
+});
+} 
+
 // consumo de API 
 async function getBudgetHotels() {
+  await fetch("http://localhost:3333/hotels").then(response => response.json())
+  .then(data => saldo.textContent = 'R$ ' + data.data[hotelId].budget)
+
+}
+
+async function getBudgetHotelsAll() {
   await fetch("http://localhost:3333/hotels").then(response => response.json())
   .then(data => saldo.textContent = 'R$ ' + data.details.bugetTotal.totalBudget)
 
 }
 
-async function reserva1() {
-  await fetch("http://localhost:3333/orders").then((res) => res.json()).then((response) => {
-    const orders = response.data
-    console.log(orders)
-
-    document.querySelector("#reserva1").innerHTML = orders[0]["created_at"]
-  });
+async function getLastBooks() {
+  const url = 'http://localhost:3333/books/lasts/' + hotelId
+  var text = '';
+  await fetch(url)
+  .then(response => response.json())
+  .then(data => data.forEach(element => {
+    text += '<div class="item"></div>'
+      text += '<div></div>'
+      text += '<h6>' + element.ended + ' - R$' + element.value +  ',00</h6>'
+    
+      document.querySelector(".list").innerHTML = text;
+  }));
 }
 
-async function reserva2() {
-  await fetch("http://localhost:3333/orders").then((res) => res.json()).then((response) => {
-    const orders = response.data
-    console.log(orders)
-
-    document.querySelector("#reserva2").innerHTML = orders[1]["created_at"]
-  });
-}
-async function reserva3() {
-  await fetch("http://localhost:3333/orders").then((res) => res.json()).then((response) => {
-    const orders = response.data
-    console.log(orders)
-
-    document.querySelector("#reserva3").innerHTML = orders[2]["created_at"]
-  });
-}
-async function reserva4() {
-  await fetch("http://localhost:3333/orders").then((res) => res.json()).then((response) => {
-    const orders = response.data
-    console.log(orders)
-
-    document.querySelector("#reserva4").innerHTML = orders[3]["created_at"]
-  });
-}
+module.exports = {hotelId};

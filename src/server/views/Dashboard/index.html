@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../global.styles.css" />
   </head>
   <body
-    onload="getDataResponsiveTable(); getDataTable(); getDataHotels(); getBudgetHotels(); reserva1(); reserva2(); reserva3(); reserva4();"
+    onload="getDataResponsiveTable(); getDataHotels(); getDataTableAll(); getBudgetHotelsAll()"
   >
     <div
       class="modal fade modal-introduction"
@@ -83,7 +83,7 @@
               data-bs-interval="false"
             >
               <div class="carousel-inner">
-                <div class="carousel-item active">
+                <!-- <div class="carousel-item active">
                   <h2>Para qual hotel você deseja solicitar?</h2>
                   <div class="list-hotels">
                     <div class="item">
@@ -99,8 +99,8 @@
                       <h6>Hotel A</h6>
                     </div>
                   </div>
-                </div>
-                <div class="carousel-item">
+                </div>-->
+                <div id="solicitationValue" class="carousel-item">
                   <h2>Quanto você deseja antecipar?</h2>
                   <h6 id="budget">
                     Valor disponivel para solicitação: 100.000,00
@@ -174,7 +174,7 @@
                       Lorem ipsum mattis porttitor eleifend tellus varius quam
                       pretium dolor porttitor hac convallis vitae curae morbi.
                     </p>
-                    <h5>Valor a receber dia 25/01/2023</h5>
+                    <h5 id="date">Valor a receber dia 25/01/2023</h5>
                     <h1 id="value">R$ 88.200,00</h1>
                   </div>
                 </div>
@@ -188,7 +188,7 @@
               class="btn btn-secondary next-button"
               data-bs-target="#carouselExampleControls"
               data-bs-slide="next"
-              onclick="getBudget()"
+              onclick = "D2(value)"
             >
               Avançar
             </button>
@@ -196,6 +196,7 @@
               type="button"
               class="btn btn-secondary"
               data-bs-dismiss="modal-solicitation"
+              onclick ="cancel()"
             >
               Cancelar
             </button>
@@ -246,7 +247,7 @@
           <h1 id="saldo">R$ 24.000,00</h1>
           <h5>Ultimas reservas</h5>
           <div class="list">
-            <div class="item">
+            <!--<div class="item">
               <div></div>
               <h6 id="reserva1">XX/XX/XXXX - XXXXXXX</h6>
             </div>
@@ -261,7 +262,7 @@
             <div class="item">
               <div></div>
               <h6 id="reserva4">XX/XX/XXXX - XXXXXXX</h6>
-            </div>
+            </div>-->
           </div>
         </div>
         <div class="custom-card col content">
@@ -273,9 +274,10 @@
             venenatis dui pellentesque, inceptos molestie dictumst.
           </div>
           <button
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-            onclick="getHotels()"
+            id="solicitation"
+            data-bs-toggle=""
+            data-bs-target=""
+            onclick="getHotels(); getBudget(); getValue(budget)"
           >
             Solicitar
           </button>
