@@ -11,7 +11,7 @@ require("./routes/index")(app);
 
 app.use(express.static("views"));
 // app.get("/dashboard", (req, res)=>{res});
-app.get("/dashboard", (req, res) => {
+app.use("/dashboard", (req, res) => {
   res.sendFile(path.join(__dirname + "/views/Dashboard/"));
 });
 
