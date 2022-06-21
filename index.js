@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 
+const PORT = process.env.PORT || 3333;
+
 app.use(express.json());
 app.use(cors());
 
@@ -13,5 +15,4 @@ app.get("/profile", express.static("/Profile"));
 app.get("/hurbcontrol", express.static("/HurbControl"));
 app.get("/authentication", express.static("/Authentication"));
 
-
-app.listen(3333);
+app.listen(PORT);
