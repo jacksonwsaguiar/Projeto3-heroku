@@ -9,11 +9,13 @@ app.use(cors());
 
 require("./routes/index")(app);
 
-// app.use(express.static("views"));
+app.use(express.static("views"));
 // app.get("/dashboard", (req, res)=>{res});
 app.get("/dashboard", (res, res) => {
   app.use(express.static(path.join(__dirname, "/Dashboard")));
   res.sendFile(path.resolve("views", "Dashboard", "index.html"));
+  res.sendFile(path.resolve("views", "Dashboard", "styles.css"));
+  res.sendFile(path.resolve("views", "Dashboard", "script.js"));
 });
 app.get("/profile", express.static("/Profile"));
 app.get("/hurbcontrol", express.static("/HurbControl"));
