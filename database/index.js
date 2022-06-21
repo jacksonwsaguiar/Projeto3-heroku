@@ -3,8 +3,9 @@ const sqlite3 = require("sqlite3").verbose();
 function getDatabase() {
   console.log("connecting database...");
   const DBPATH = "./database/database.db";
+ const connection =  new sqlite3.Database(DBPATH);
   console.log("database connected.");
-  return new sqlite3.Database(DBPATH);
+  return connection 
 }
 
 const db = getDatabase();
