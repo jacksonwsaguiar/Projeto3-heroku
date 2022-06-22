@@ -10,6 +10,7 @@ app.use(cors());
 require("./routes/index")(app);
 
 app.use(express.static("views"));
+
 app.use("/dashboard", (req, res) => {
   res.sendFile(path.join(__dirname, "/views/Dashboard/index.html"));
 });
@@ -19,7 +20,7 @@ app.use("/profile", (req, res) => {
 app.use("/hurbcontrol", (req, res) =>
   res.sendFile(path.join(__dirname, "/views/HurbControl/index.html"))
 );
-app.use("/authentication", (req, res) =>
+app.use("/", (req, res) =>
   res.sendFile(path.join(__dirname, "/views/Authetication/index.html"))
 );
 
