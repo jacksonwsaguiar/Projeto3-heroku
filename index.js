@@ -11,6 +11,9 @@ require("./routes/index")(app);
 
 app.use(express.static("views"));
 
+app.use("/", (req, res) => {
+  res.redirect("/authentication");
+});
 app.use("/dashboard", (req, res) => {
   res.sendFile(path.join(__dirname, "/views/Dashboard/index.html"));
 });
@@ -20,7 +23,7 @@ app.use("/profile", (req, res) => {
 app.use("/hurbcontrol", (req, res) =>
   res.sendFile(path.join(__dirname, "/views/HurbControl/index.html"))
 );
-app.use("/", (req, res) =>
+app.use("/authentication", (req, res) =>
   res.sendFile(path.join(__dirname, "/views/Authetication/index.html"))
 );
 
