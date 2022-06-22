@@ -1,5 +1,5 @@
 let otp = document.querySelector("#otp-input");
-
+const localStorage = require("localStorage");
 for (let pin of otp.children) {
   pin.onkeyup = function (event) {
     if (event.target.value > 0)
