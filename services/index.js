@@ -6,7 +6,8 @@ async function authenticate(code) {
   );
 
   if (!data) return "user not found";
-
+  delete data.access_code;
+  
   return data;
 }
 async function hurbDashboard() {
@@ -40,13 +41,10 @@ async function hurbDashboard() {
 
   const averages = {
     lastMonth: "15000",
-    currentMonth: "10000"
+    currentMonth: "10000",
   };
 
-  const ranking =   await database.queryMany(
-    `select * from hotel LIMIT 6`
-  );
-
+  const ranking = await database.queryMany(`select * from hotel LIMIT 6`);
 
   D2.averages = averages;
   // D2.rank = D2hotel;
@@ -178,6 +176,7 @@ async function getHotels(page = 1) {
     meta,
   };
 }
+
 async function getOwners(page = 1) {
   const offset = (page - 1) * 20;
 
@@ -191,6 +190,11 @@ async function getOwners(page = 1) {
     data,
     meta,
   };
+}
+async function getOwnerById(id) {
+  const data = await database.query(`SELECT * FROM owner WHERE id = ?`, [id]);
+  delete data.access_code;
+  return data;
 }
 
 async function getOrders(page = 1) {
@@ -275,4 +279,5 @@ module.exports = {
   getLastsBooks,
   hurbDashboard,
   updateOwner,
+  getOwnerById,
 };

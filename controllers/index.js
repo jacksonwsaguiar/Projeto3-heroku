@@ -59,13 +59,16 @@ exports.getOrdersByStatus = async (req, res) => {
 };
 
 exports.getHotels = async (req, res) => {
-
   const response = await services.getHotels();
   res.status(200).json(response);
 };
 
 exports.getOwners = async (req, res) => {
   const response = await services.getOwners();
+  res.status(200).json(response);
+};
+exports.getOwnerById = async (req, res) => {
+  const response = await services.getOwnerById(req.params.id);
   res.status(200).json(response);
 };
 

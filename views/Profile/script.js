@@ -8,8 +8,17 @@ function handleProfileEdit() {
 
 function getData() {
   var data = JSON.parse(localStorage.getItem("session"));
-  document.querySelector("#name").value = data.name;
-  document.querySelector("#email").value = data.email;
+
+  fetch("https://hurb-app.herokuapp.com/owners/" + data.id, {
+    method: "GET",
+    headers: { "Content-type": "application/json" },
+  })
+    .then((response) => {
+      const user = response.json();
+      document.querySelector("#name").value = user.name;
+      document.querySelector("#email").value = user.email;
+    })
+    .then((data) => console.log(data));
 }
 
 function save() {
@@ -29,6 +38,6 @@ function save() {
     headers: { "Content-type": "application/json" },
   })
     .then(window.alert("mudanças salvas"))
-    .then((response) => response.json())
+    .then((response) => getData())
     .then((data) => console.log(data));
 }

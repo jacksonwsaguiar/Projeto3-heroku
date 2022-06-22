@@ -20,7 +20,6 @@ const alreadyAuthenticated = (req, res, next) => {
   else res.redirect("/authentication");
 };
 
-console.log(session);
 
 require("./routes/index")(app);
 
