@@ -160,7 +160,7 @@ async function getDataHotels() {
 
 // consumo de API
 async function getBudgetHotels() {
-  await fetch("http://localhost/hotels")
+  await fetch(hostname + "/hotels")
     .then((response) => response.json())
     .then(
       (data) =>
