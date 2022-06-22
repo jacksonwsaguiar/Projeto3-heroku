@@ -4,7 +4,6 @@ var introductionModal = new bootstrap.Modal(
     keyboard: false,
   }
 );
-const hostname = "https://hurb-app.herokuapp.com";
 window.addEventListener("load", function () {
   var display = sessionStorage.getItem("display");
   if (display == null) {
@@ -76,6 +75,8 @@ async function getDataTable() {
 }
 
 async function getDataResponsiveTable() {
+  const hostname = "https://hurb-app.herokuapp.com";
+
   const res = await fetch(hostname + "/orders");
   const data = await res.json();
   const orders = await data.data;
@@ -136,6 +137,8 @@ async function getDataResponsiveTable() {
 }
 
 async function getDataHotels() {
+  const hostname = "https://hurb-app.herokuapp.com";
+
   const res = await fetch(hostname + "/hotels");
   const data = await res.json();
   const hotels = await data.data;
@@ -162,6 +165,8 @@ async function getDataHotels() {
 
 // consumo de API
 async function getBudgetHotels() {
+  const hostname = "https://hurb-app.herokuapp.com";
+
   await fetch(hostname + "/hotels")
     .then((response) => response.json())
     .then(
@@ -171,6 +176,8 @@ async function getBudgetHotels() {
 }
 
 async function reserva1() {
+  const hostname = "https://hurb-app.herokuapp.com";
+
   await fetch(hostname + "/orders")
     .then((res) => res.json())
     .then((response) => {
@@ -182,6 +189,8 @@ async function reserva1() {
 }
 
 async function reserva2() {
+  const hostname = "https://hurb-app.herokuapp.com";
+
   await fetch(hostname + "/orders")
     .then((res) => res.json())
     .then((response) => {
@@ -192,6 +201,8 @@ async function reserva2() {
     });
 }
 async function reserva3() {
+  const hostname = "https://hurb-app.herokuapp.com";
+
   await fetch(hostname + "/orders")
     .then((res) => res.json())
     .then((response) => {
@@ -202,6 +213,8 @@ async function reserva3() {
     });
 }
 async function reserva4() {
+  const hostname = "https://hurb-app.herokuapp.com";
+
   await fetch(hostname + "/orders")
     .then((res) => res.json())
     .then((response) => {

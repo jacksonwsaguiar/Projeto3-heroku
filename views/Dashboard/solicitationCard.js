@@ -1,9 +1,8 @@
 var hotelId;
 var hotelBudget;
-const hostname = "https://hurb-app.herokuapp.com";
 // Getting total budget from database
 function getBudget(totalBudget) {
-  const url = hostname + "/hotels";
+  const url = "https://hurb-app.herokuapp.com/hotels";
 
   fetch(url)
     .then((response) => response.json())
@@ -27,7 +26,7 @@ function getBudget(totalBudget) {
 
 // Getting the budget asked from the user
 function getValue(budget) {
-  const url = hostname + "/hotels";
+  const url = "https://hurb-app.herokuapp.com/hotels";
 
   fetch(url)
     .then((response) => response.json())
@@ -76,7 +75,7 @@ var newOrder = {
 
 // POST requisiton to create a new order in the database according to the category (D2, D7, D15)
 function createOrder(newOrder) {
-  const url = hostname + "/orders";
+  const url = "https://hurb-app.herokuapp.com/orders";
 
   var D2Checked = document.querySelector("#btnradio1");
   var D7Checked = document.querySelector("#btnradio2");
@@ -129,7 +128,7 @@ function createOrder(newOrder) {
 
 // Creating the list of hotels to be selected
 function getHotels() {
-  const url = hostname + "/hotels";
+  const url = "https://hurb-app.herokuapp.com" + "/hotels";
 
   var text = "";
 

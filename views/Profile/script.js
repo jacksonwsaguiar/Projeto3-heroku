@@ -23,7 +23,7 @@ function save() {
     email: email,
   };
 
-  fetch("http://localhost:1234/owners", {
+  fetch("https://hurb-app.herokuapp.com/owners", {
     method: "PUT",
     body: JSON.stringify(data),
     headers: { "Content-type": "application/json" },
