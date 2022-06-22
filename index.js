@@ -3,11 +3,15 @@ const app = express();
 const cors = require("cors");
 const path = require("path");
 const PORT = process.env.PORT || 1234;
-// const localStorage = require('node-localstorage');
-const localStorage = require("localStorage");
+const localStorage = require("node-localstorage").LocalStorage;
 
 app.use(express.json());
 app.use(cors());
+
+if (typeof localStorage === "undefined" || localStorage === null) {
+  var LocalStorage = require("node-localstorage").LocalStorage;
+  localStorage = new LocalStorage("./scratch");
+}
 
 const authMiddleware = (req, res, next) => {
   const session = localStorage.getItem("session");
