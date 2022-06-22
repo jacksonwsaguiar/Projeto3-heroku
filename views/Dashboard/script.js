@@ -132,29 +132,8 @@ async function getDataResponsiveTable() {
   }
 }
 
-{
-  /* <tbody>
-              <tr>
-                <th>Tipo</th>
-                <td>D2</td>
-              </tr>
-              <tr>
-                <th>Data</th>
-                <td>XX/XX/XXXX</td>
-              </tr>
-              <tr>
-                <th>Valor solicitado</th>
-                <td>R$ XXXXX</td>
-              </tr>
-              <tr>
-                <th>Valor total</th>
-                <td>R$ XXXXX</td>
-              </tr>
-            </tbody> */
-}
-
 async function getDataHotels() {
-  const res = await fetch("http://localhost:1234/hotels");
+  const res = await fetch("https://hurb-app.herokuapp.com:1234/hotels");
   const data = await res.json();
   const hotels = await data.data;
 

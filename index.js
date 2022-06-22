@@ -10,12 +10,17 @@ app.use(cors());
 require("./routes/index")(app);
 
 app.use(express.static("views"));
-// app.get("/dashboard", (req, res)=>{res});
 app.use("/dashboard", (req, res) => {
   res.sendFile(path.join(__dirname, "/views/Dashboard/index.html"));
 });
-app.use("/profile", express.static(__dirname + "/Profile"));
-app.use("/hurbcontrol", express.static(__dirname + "/HurbControl"));
-app.use("/authentication", express.static(__dirname + "/Authentication"));
+app.use("/profile", (req, res) => {
+  res.sendFile(path.join(__dirname, "/views/Profile/index.html"));
+});
+app.use("/hurbcontrol", (req, res) =>
+  res.sendFile(path.join(__dirname, "/views/HurbControl/index.html"))
+);
+app.use("/authentication", (req, res) =>
+  res.sendFile(path.join(__dirname, "/views/Authetication/index.html"))
+);
 
 app.listen(PORT);
