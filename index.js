@@ -11,7 +11,7 @@ require("./routes/index")(app);
 
 app.use(express.static("views"));
 
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
   res.redirect("/authentication");
 });
 app.use("/dashboard", (req, res) => {
