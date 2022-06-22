@@ -38,6 +38,8 @@ function nextSlider() {
 }
 
 async function getDataTable() {
+  const hostname = "https://hurb-app.herokuapp.com";
+
   const res = await fetch(hostname + "/orders");
   const data = await res.json();
   const orders = await data.data;
