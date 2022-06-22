@@ -14,6 +14,19 @@ window.addEventListener("load", function () {
   }
 });
 
+function getData() {
+  var data = JSON.parse(localStorage.getItem("session"));
+
+  fetch("https://hurb-app.herokuapp.com/owners/" + data.id, {
+    method: "GET",
+    headers: { "Content-type": "application/json" },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById("profile-name").innerText = data.name;
+    });
+}
+
 var myCarousel = document.querySelector("#introductionCarousel");
 var carousel = new bootstrap.Carousel(myCarousel);
 var carouselLenth =

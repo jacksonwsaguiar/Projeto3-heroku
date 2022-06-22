@@ -1,3 +1,4 @@
+
 let otp = document.querySelector("#otp-input");
 
 for (let pin of otp.children) {

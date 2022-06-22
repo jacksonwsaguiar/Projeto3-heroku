@@ -8,22 +8,6 @@ const localStorage = require("node-localstorage").LocalStorage;
 app.use(express.json());
 app.use(cors());
 
-if (typeof localStorage === "undefined" || localStorage === null) {
-  var LocalStorage = require("node-localstorage").LocalStorage;
-  localStorage = new LocalStorage("./scratch");
-}
-
-const authMiddleware = (req, res, next) => {
-  const session = localStorage.getItem("session");
-  if (!session) res.redirect("/authentication");
-  else next();
-};
-const alreadyAuthenticated = (req, res, next) => {
-  const session = localStorage.getItem("session");
-  if (session) res.redirect("/dashboard");
-  else next();
-};
-
 require("./routes/index")(app);
 
 app.use(express.static("views"));
@@ -31,16 +15,16 @@ app.use(express.static("views"));
 app.get("/", (req, res) => {
   res.redirect("/authentication");
 });
-app.use("/dashboard", authMiddleware, (req, res) => {
+app.use("/dashboard", (req, res) => {
   res.sendFile(path.join(__dirname, "/views/Dashboard/index.html"));
 });
-app.use("/profile", authMiddleware, (req, res) => {
+app.use("/profile", (req, res) => {
   res.sendFile(path.join(__dirname, "/views/Profile/index.html"));
 });
-app.use("/hurbcontrol", authMiddleware, (req, res) =>
+app.use("/hurbcontrol", (req, res) =>
   res.sendFile(path.join(__dirname, "/views/HurbControl/index.html"))
 );
-app.use("/authentication", alreadyAuthenticated, (req, res) =>
+app.use("/authentication", (req, res) =>
   res.sendFile(path.join(__dirname, "/views/Authentication/index.html"))
 );
 

@@ -13,12 +13,11 @@ function getData() {
     method: "GET",
     headers: { "Content-type": "application/json" },
   })
-    .then((response) => {
-      const user = response.json();
-      document.querySelector("#name").value = user.name;
-      document.querySelector("#email").value = user.email;
-    })
-    .then((data) => console.log(data));
+    .then((response) => response.json())
+    .then((data) => {
+      document.querySelector("#name").value = data.name;
+      document.querySelector("#email").value = data.email;
+    });
 }
 
 function save() {
