@@ -3,11 +3,17 @@ const app = express();
 const cors = require("cors");
 const path = require("path");
 const PORT = process.env.PORT || 1234;
+// const localStorage = require('node-localstorage');
+const localStorage = require('localStorage');
 
 app.use(express.json());
 app.use(cors());
 
-const session = window.localStorage.getItem("session");
+const session = localStorage.getItem("session");
+const authMiddleware = (req, res, next) => {
+//   if (!session) res.redirect("/authentication");
+//   else next();
+};
 
 console.log(session);
 
