@@ -12,7 +12,7 @@ require("./routes/index")(app);
 app.use(express.static("views"));
 // app.get("/dashboard", (req, res)=>{res});
 app.use("/dashboard", (req, res) => {
-  res.sendFile("/views/Dashboard/index.html");
+  res.sendFile(path.join(__dirname, "/views/Dashboard/index.html"));
 });
 app.use("/profile", express.static(__dirname + "/Profile"));
 app.use("/hurbcontrol", express.static(__dirname + "/HurbControl"));
