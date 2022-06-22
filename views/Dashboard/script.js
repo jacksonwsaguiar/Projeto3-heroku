@@ -38,7 +38,7 @@ function nextSlider() {
 }
 
 async function getDataTable() {
-  const res = await fetch("http://localhost:1234/orders");
+  const res = await fetch(hostname + "/orders");
   const data = await res.json();
   const orders = await data.data;
 
@@ -74,7 +74,7 @@ async function getDataTable() {
 }
 
 async function getDataResponsiveTable() {
-  const res = await fetch("http://localhost:1234/orders");
+  const res = await fetch(hostname + "/orders");
   const data = await res.json();
   const orders = await data.data;
 
@@ -134,7 +134,7 @@ async function getDataResponsiveTable() {
 }
 
 async function getDataHotels() {
-  const res = await fetch(url + "/hotels");
+  const res = await fetch(hostname + "/hotels");
   const data = await res.json();
   const hotels = await data.data;
 
@@ -169,7 +169,7 @@ async function getBudgetHotels() {
 }
 
 async function reserva1() {
-  await fetch("http://localhost:1234/orders")
+  await fetch(hostname + "/orders")
     .then((res) => res.json())
     .then((response) => {
       const orders = response.data;
@@ -180,7 +180,7 @@ async function reserva1() {
 }
 
 async function reserva2() {
-  await fetch("http://localhost:1234/orders")
+  await fetch(hostname + "/orders")
     .then((res) => res.json())
     .then((response) => {
       const orders = response.data;
@@ -190,7 +190,7 @@ async function reserva2() {
     });
 }
 async function reserva3() {
-  await fetch("http://localhost:1234/orders")
+  await fetch(hostname + "/orders")
     .then((res) => res.json())
     .then((response) => {
       const orders = response.data;
@@ -200,7 +200,7 @@ async function reserva3() {
     });
 }
 async function reserva4() {
-  await fetch("http://localhost:1234/orders")
+  await fetch(hostname + "/orders")
     .then((res) => res.json())
     .then((response) => {
       const orders = response.data;
