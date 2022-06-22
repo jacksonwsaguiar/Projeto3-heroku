@@ -17,9 +17,8 @@ const authMiddleware = (req, res, next) => {
 const alreadyAuthenticated = (req, res, next) => {
   const session = localStorage.getItem("session");
   if (session) res.redirect("/dashboard");
-  else res.redirect("/authentication");
+  else next();
 };
-
 
 require("./routes/index")(app);
 
