@@ -7,6 +7,10 @@ const PORT = process.env.PORT || 1234;
 app.use(express.json());
 app.use(cors());
 
+const session = window.localStorage.getItem("session");
+
+console.log(session);
+
 require("./routes/index")(app);
 
 app.use(express.static("views"));
@@ -24,7 +28,7 @@ app.use("/hurbcontrol", (req, res) =>
   res.sendFile(path.join(__dirname, "/views/HurbControl/index.html"))
 );
 app.use("/authentication", (req, res) =>
-  res.sendFile(path.join(__dirname, "/views/Authetication/index.html"))
+  res.sendFile(path.join(__dirname, "/views/Authentication/index.html"))
 );
 
 app.listen(PORT);
