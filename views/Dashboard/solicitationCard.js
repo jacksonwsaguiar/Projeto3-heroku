@@ -3,7 +3,7 @@ var hotelBudget;
 
 // Getting total budget from database
 function getBudget(totalBudget) {
-    const url = 'http://localhost:3333/hotels'
+    const url = 'http://localhost:1234/hotels'
   
     fetch(url)
     .then(response => response.json())
@@ -23,7 +23,7 @@ function getBudget(totalBudget) {
 
   // Getting the budget asked from the user
   function getValue(budget) {
-    const url = 'http://localhost:3333/hotels'
+    const url = 'http://localhost:1234/hotels'
   
     fetch(url)
     .then(response => response.json())
@@ -74,7 +74,7 @@ function getBudget(totalBudget) {
 
     // POST requisiton to create a new order in the database according to the category (D2, D7, D15)
     function createOrder(newOrder) {
-      const url = 'http://localhost:3333/orders'
+      const url = 'http://localhost:1234/orders'
 
       var D2Checked = document.querySelector("#btnradio1");
       var D7Checked = document.querySelector("#btnradio2");
@@ -132,7 +132,7 @@ function getBudget(totalBudget) {
   
   // Creating the list of hotels to be selected
   function getHotels() {
-    const url = 'http://localhost:3333/hotels'
+    const url = 'http://localhost:1234/hotels'
   
     var text = '';
   

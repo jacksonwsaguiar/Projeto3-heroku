@@ -23,7 +23,7 @@ function save() {
     email: email,
   };
 
-  fetch("http://localhost:3333/owners", {
+  fetch("http://localhost:1234/owners", {
     method: "PUT",
     body: JSON.stringify(data),
     headers: { "Content-type": "application/json" },
