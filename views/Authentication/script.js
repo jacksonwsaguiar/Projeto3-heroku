@@ -1,6 +1,5 @@
 let otp = document.querySelector("#otp-input");
 
-
 for (let pin of otp.children) {
   pin.onkeyup = function (event) {
     if (event.target.value > 0)
@@ -35,5 +34,5 @@ function submit() {
 }
 
 function createSession(data) {
-  setItem("session", JSON.stringify(data));
+  localStorage.setItem("session", JSON.stringify(data));
 }
