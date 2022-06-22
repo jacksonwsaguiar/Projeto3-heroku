@@ -84,9 +84,6 @@ function createOrder(newOrder) {
   const requestCode = Math.floor(1000 + Math.random() * 9000);
 
   var amount = getValue(budget);
-  console.log(amount);
-
-  console.log(hotelId);
 
   if (D2Checked.checked == true) {
     newOrder = {

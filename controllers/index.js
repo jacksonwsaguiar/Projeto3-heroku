@@ -18,7 +18,6 @@ exports.getHurbDashboard = async (req, res) => {
 exports.createOrder = (req, res) => {
   const { request_code, category, requested_amount, status, hotel_id } =
     req.body;
-  console.log;
   const response = services.createOrder(
     request_code,
     category,
@@ -60,15 +59,13 @@ exports.getOrdersByStatus = async (req, res) => {
 };
 
 exports.getHotels = async (req, res) => {
-  console.log(req.query);
+
   const response = await services.getHotels();
-  console.log(response);
   res.status(200).json(response);
 };
 
 exports.getOwners = async (req, res) => {
   const response = await services.getOwners();
-  console.log(response);
   res.status(200).json(response);
 };
 

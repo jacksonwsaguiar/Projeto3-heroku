@@ -43,8 +43,6 @@ async function getDataTable() {
   const data = await res.json();
   const orders = await data.data;
 
-  console.log(orders);
-
   for (let i = 0; i < orders.length; i++) {
     let tr = document.createElement("tr");
 
@@ -80,9 +78,6 @@ async function getDataResponsiveTable() {
   const res = await fetch(hostname + "/orders");
   const data = await res.json();
   const orders = await data.data;
-
-  console.log("rodando");
-  console.log(orders);
 
   // criar um tbdoy para cada elemento em orders
   for (let i = 0; i < orders.length; i++) {
@@ -182,7 +177,6 @@ async function reserva1() {
     .then((res) => res.json())
     .then((response) => {
       const orders = response.data;
-      console.log(orders);
 
       document.querySelector("#reserva1").innerHTML = orders[0]["created_at"];
     });
@@ -195,7 +189,6 @@ async function reserva2() {
     .then((res) => res.json())
     .then((response) => {
       const orders = response.data;
-      console.log(orders);
 
       document.querySelector("#reserva2").innerHTML = orders[1]["created_at"];
     });
@@ -207,7 +200,6 @@ async function reserva3() {
     .then((res) => res.json())
     .then((response) => {
       const orders = response.data;
-      console.log(orders);
 
       document.querySelector("#reserva3").innerHTML = orders[2]["created_at"];
     });
@@ -219,7 +211,6 @@ async function reserva4() {
     .then((res) => res.json())
     .then((response) => {
       const orders = response.data;
-      console.log(orders);
 
       document.querySelector("#reserva4").innerHTML = orders[3]["created_at"];
     });
