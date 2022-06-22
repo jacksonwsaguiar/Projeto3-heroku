@@ -4,6 +4,7 @@ var introductionModal = new bootstrap.Modal(
     keyboard: false,
   }
 );
+const hostname = "https://hurb-app.herokuapp.com";
 window.addEventListener("load", function () {
   var display = sessionStorage.getItem("display");
   if (display == null) {
@@ -133,7 +134,7 @@ async function getDataResponsiveTable() {
 }
 
 async function getDataHotels() {
-  const res = await fetch("http://localhost:1234/hotels");
+  const res = await fetch(url + "/hotels");
   const data = await res.json();
   const hotels = await data.data;
 
@@ -159,7 +160,7 @@ async function getDataHotels() {
 
 // consumo de API
 async function getBudgetHotels() {
-  await fetch("http://localhost:1234/hotels")
+  await fetch("http://localhost/hotels")
     .then((response) => response.json())
     .then(
       (data) =>
