@@ -269,7 +269,9 @@ function getHotelId(id) {
 
 // consumo de API 
 async function getBudgetHotels() {
-  await fetch("http://localhost:3333/hotels").then(response => response.json())
+  const hostname = "https://hurb-app.herokuapp.com";
+
+  await fetch(hostname + "/hotels").then(response => response.json())
   .then(data => saldo.textContent = 'R$ ' + data.data[hotelId].budget)
 
 }
