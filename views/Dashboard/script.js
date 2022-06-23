@@ -1,3 +1,5 @@
+var hotelId;
+
 var introductionModal = new bootstrap.Modal(
   document.getElementById("staticBackdrop"),
   {
@@ -49,182 +51,251 @@ function nextSlider() {
   }
 }
 
-async function getDataTable() {
+async function getDataTableAll() {
   const hostname = "https://hurb-app.herokuapp.com";
 
-  const res = await fetch(hostname + "/orders");
-  const data = await res.json();
-  const orders = await data.data;
+  const res = await fetch(hostname + "/orders")
+  const data = await res.json()
+  const orders = await data.data
 
-  for (let i = 0; i < orders.length; i++) {
-    let tr = document.createElement("tr");
+  for(let i=0; i < orders.length; i++) {
+    let tr = document.createElement("tr")
+    
+    let td_category = document.createElement("td")
+    td_category.innerHTML = orders[i]["category"]
+    
+    let td_data = document.createElement("td")
+    td_data.innerHTML = orders[i]["created_at"].split(" ")[0]
 
-    let td_category = document.createElement("td");
-    td_category.innerHTML = orders[i]["category"];
+    let td_amount = document.createElement("td")
+    td_amount.innerHTML = `R$ ${orders[i]["requested_amount"]}`
 
-    let td_data = document.createElement("td");
-    td_data.innerHTML = orders[i]["created_at"].split(" ")[0];
-
-    let td_amount = document.createElement("td");
-    td_amount.innerHTML = `R$ ${orders[i]["requested_amount"]}`;
-
-    let td_totalamount = document.createElement("td");
-    if (orders[i]["category"] === "D2") {
-      td_totalamount.innerHTML = `R$ ${orders[i]["requested_amount"] * 0.88}`;
-    } else if (orders[i]["category"] === "D7") {
-      td_totalamount.innerHTML = `R$ ${orders[i]["requested_amount"] * 0.91}`;
+    let td_totalamount = document.createElement("td")
+    if(orders[i]["category"] === "D2") {
+      td_totalamount.innerHTML = `R$ ${orders[i]["requested_amount"] * 0.88}`
+    } else if(orders[i]["category"] === "D7") {
+      td_totalamount.innerHTML = `R$ ${orders[i]["requested_amount"] * 0.91}`
     } else {
-      td_totalamount.innerHTML = `R$ ${orders[i]["requested_amount"] * 0.94}`;
+      td_totalamount.innerHTML = `R$ ${orders[i]["requested_amount"] * 0.94}`
     }
-
-    tr.appendChild(td_category);
-    tr.appendChild(td_data);
-    tr.appendChild(td_amount);
-    tr.appendChild(td_totalamount);
-    document.querySelector(".custom-table").appendChild(tr);
+    
+    tr.appendChild(td_category)
+    tr.appendChild(td_data)
+    tr.appendChild(td_amount)
+    tr.appendChild(td_totalamount)
+    document.querySelector(".custom-table").appendChild(tr)
   }
 }
+
+async function getDataTable() {
+  document.querySelector(".custom-table").innerHTML = '<tr><th>Tipo</th><th>Data</th><th>Valor solicitado</th><th>Valor total</th></tr>';
+
+  const hostname = "https://hurb-app.herokuapp.com"
+
+  const res = await fetch(hostname + "/orders")
+  const data = await res.json()
+  const orders = await data.data
+
+  var ordersHotel = [];
+
+  console.log(orders)
+
+  for(let i=0; i < orders.length; i++) {
+    if (orders[i]["hotel_id"] == hotelId) {
+      ordersHotel.push(orders[i]);
+    }
+  }
+
+  for(let i=0; i < ordersHotel.length; i++) {
+    let tr = document.createElement("tr")
+    
+    let td_category = document.createElement("td")
+    td_category.innerHTML = ordersHotel[i]["category"]
+    
+    let td_data = document.createElement("td")
+    td_data.innerHTML = ordersHotel[i]["created_at"].split(" ")[0]
+
+    let td_amount = document.createElement("td")
+    td_amount.innerHTML = `R$ ${ordersHotel[i]["requested_amount"]}`
+
+    let td_totalamount = document.createElement("td")
+    if(ordersHotel[i]["category"] === "D2") {
+      td_totalamount.innerHTML = `R$ ${ordersHotel[i]["requested_amount"] * 0.88}`
+    } else if(ordersHotel[i]["category"] === "D7") {
+      td_totalamount.innerHTML = `R$ ${ordersHotel[i]["requested_amount"] * 0.91}`
+    } else {
+      td_totalamount.innerHTML = `R$ ${ordersHotel[i]["requested_amount"] * 0.94}`
+    }
+    
+    
+    tr.appendChild(td_category)
+    tr.appendChild(td_data)
+    tr.appendChild(td_amount)
+    tr.appendChild(td_totalamount)
+    document.querySelector(".custom-table").appendChild(tr)
+    
+  }
+  ordersHotel = [];
+}
+
 
 async function getDataResponsiveTable() {
-  const hostname = "https://hurb-app.herokuapp.com";
+  const hostname = "https://hurb-app.herokuapp.com"
 
-  const res = await fetch(hostname + "/orders");
-  const data = await res.json();
-  const orders = await data.data;
+  const res = await fetch(hostname + "/orders")
+  const data = await res.json()
+  const orders = await data.data
+
+  console.log('rodando')
+  console.log(orders)
 
   // criar um tbdoy para cada elemento em orders
-  for (let i = 0; i < orders.length; i++) {
-    let tbody = document.createElement("tbody");
+  for(let i = 0; i < orders.length; i++) {
+    let tbody = document.createElement("tbody")
+    
+    let tr_category = document.createElement("tr")
+    let th_category = document.createElement("th")
+    th_category.innerHTML = "Tipo"
+    let td_category = document.createElement("td")
+    td_category.innerHTML = orders[i].category
+    tr_category.appendChild(th_category)
+    tr_category.appendChild(td_category)
 
-    let tr_category = document.createElement("tr");
-    let th_category = document.createElement("th");
-    th_category.innerHTML = "Tipo";
-    let td_category = document.createElement("td");
-    td_category.innerHTML = orders[i].category;
-    tr_category.appendChild(th_category);
-    tr_category.appendChild(td_category);
+    let tr_created_at = document.createElement("tr")
+    let th_created_at = document.createElement("th")
+    th_created_at.innerHTML = "Data"
+    let td_created_at = document.createElement("td")
+    td_created_at.innerHTML = orders[i]["created_at"].split(" ")[0]
+    tr_created_at.appendChild(th_created_at)
+    tr_created_at.appendChild(td_created_at)
 
-    let tr_created_at = document.createElement("tr");
-    let th_created_at = document.createElement("th");
-    th_created_at.innerHTML = "Data";
-    let td_created_at = document.createElement("td");
-    td_created_at.innerHTML = orders[i]["created_at"].split(" ")[0];
-    tr_created_at.appendChild(th_created_at);
-    tr_created_at.appendChild(td_created_at);
+    let tr_requested_amount = document.createElement("tr")
+    let th_requested_amount = document.createElement("th")
+    th_requested_amount.innerHTML = "Valor solicitado"
+    let td_requested_amount = document.createElement("td")
+    td_requested_amount.innerHTML = `R$ ${orders[i]["requested_amount"]}`
+    tr_requested_amount.appendChild(th_requested_amount)
+    tr_requested_amount.appendChild(td_requested_amount)
 
-    let tr_requested_amount = document.createElement("tr");
-    let th_requested_amount = document.createElement("th");
-    th_requested_amount.innerHTML = "Valor solicitado";
-    let td_requested_amount = document.createElement("td");
-    td_requested_amount.innerHTML = `R$ ${orders[i]["requested_amount"]}`;
-    tr_requested_amount.appendChild(th_requested_amount);
-    tr_requested_amount.appendChild(td_requested_amount);
+    let tr_totalamount = document.createElement("tr")
+    let th_totalamount = document.createElement("th")
+    th_totalamount.innerHTML = "Valor total"
 
-    let tr_totalamount = document.createElement("tr");
-    let th_totalamount = document.createElement("th");
-    th_totalamount.innerHTML = "Valor total";
-
-    let td_totalamount = document.createElement("td");
-    if (orders[i]["category"] === "D2") {
-      td_totalamount.innerHTML = `R$ ${orders[i]["requested_amount"] * 0.88}`;
-    } else if (orders[i]["category"] === "D7") {
-      td_totalamount.innerHTML = `R$ ${orders[i]["requested_amount"] * 0.91}`;
+    let td_totalamount = document.createElement("td")
+    if(orders[i]["category"] === "D2") {
+      td_totalamount.innerHTML = `R$ ${orders[i]["requested_amount"] * 0.88}`
+    } else if(orders[i]["category"] === "D7") {
+      td_totalamount.innerHTML = `R$ ${orders[i]["requested_amount"] * 0.91}`
     } else {
-      td_totalamount.innerHTML = `R$ ${orders[i]["requested_amount"] * 0.94}`;
+      td_totalamount.innerHTML = `R$ ${orders[i]["requested_amount"] * 0.94}`
     }
-    tr_totalamount.appendChild(th_totalamount);
-    tr_totalamount.appendChild(td_totalamount);
+    tr_totalamount.appendChild(th_totalamount)
+    tr_totalamount.appendChild(td_totalamount)
 
-    tbody.appendChild(tr_category);
-    tbody.appendChild(tr_created_at);
-    tbody.appendChild(tr_requested_amount);
-    tbody.appendChild(tr_totalamount);
+    
 
-    document.querySelector(".responsive-table").appendChild(tbody);
+    tbody.appendChild(tr_category)
+    tbody.appendChild(tr_created_at)
+    tbody.appendChild(tr_requested_amount)
+    tbody.appendChild(tr_totalamount)
+
+    document.querySelector(".responsive-table").appendChild(tbody)
   }
 }
+
+{/* <tbody>
+              <tr>
+                <th>Tipo</th>
+                <td>D2</td>
+              </tr>
+              <tr>
+                <th>Data</th>
+                <td>XX/XX/XXXX</td>
+              </tr>
+              <tr>
+                <th>Valor solicitado</th>
+                <td>R$ XXXXX</td>
+              </tr>
+              <tr>
+                <th>Valor total</th>
+                <td>R$ XXXXX</td>
+              </tr>
+            </tbody> */}
+
 
 async function getDataHotels() {
-  const hostname = "https://hurb-app.herokuapp.com";
+  const hostname = "https://hurb-app.herokuapp.com"
 
-  const res = await fetch(hostname + "/hotels");
-  const data = await res.json();
-  const hotels = await data.data;
+  const res = await fetch(hostname + "/hotels")
+  const data = await res.json()
+  const hotels = await data.data
 
-  let ownerId = 1;
+  let ownerId = 1
+  var text = '';
 
-  for (let i = 0; i < hotels.length; i++) {
-    if (hotels[i].owner_id === ownerId) {
-      let div = document.createElement("div");
-      div.className = "item";
+  for(let i = 0; i < hotels.length; i++) {
+    if(hotels[i].owner_id === ownerId) {
+      text += `<div id="hotel ${hotels[i].id}" class="item" onclick="getHotelId(this.id); getDataTable(); getBudgetHotels(); getLastBooks()">`
+        text += '<div></div>'
+        text += '<h4 id="hotels">' + hotels[i].name + '</h4>'
+      text += '</div>'
+      document.querySelector(".hotels-list").innerHTML = text;
 
-      let divPhoto = document.createElement("div");
-
-      let hotelName = document.createElement("h4");
-      hotelName.innerHTML = hotels[i].name;
-
-      div.appendChild(divPhoto);
-      div.appendChild(hotelName);
-
-      document.querySelector(".hotels-list").appendChild(div);
+      //let div = document.createElement("div")
+      //div.className = "item"
+  
+      //let divPhoto = document.createElement("div")
+  
+      //let hotelName = document.createElement("h4")
+      //hotelName.innerHTML = hotels[i].name
+  
+      //div.appendChild(divPhoto)
+      //div.appendChild(hotelName)
+  
+      //document.querySelector(".hotels-list").appendChild(div)
     }
   }
 }
 
-// consumo de API
+// Getting hotel_id and changing background color of selected hotel
+function getHotelId(id) {
+  hotelId = id.split(' ')[1];
+  var hotelsList = $('.item');
+  hotelsList.click(function() {
+    hotelsList.css('background-color', 'rgba(127, 130, 132, 0.1)');
+    $(this).css('background-color', '#3468fc');
+});
+} 
+
+// consumo de API 
 async function getBudgetHotels() {
-  const hostname = "https://hurb-app.herokuapp.com";
+  await fetch("http://localhost:3333/hotels").then(response => response.json())
+  .then(data => saldo.textContent = 'R$ ' + data.data[hotelId].budget)
 
-  await fetch(hostname + "/hotels")
-    .then((response) => response.json())
-    .then(
-      (data) =>
-        (saldo.textContent = "R$ " + data.details.bugetTotal.totalBudget)
-    );
 }
 
-async function reserva1() {
+async function getBudgetHotelsAll() {
   const hostname = "https://hurb-app.herokuapp.com";
 
-  await fetch(hostname + "/orders")
-    .then((res) => res.json())
-    .then((response) => {
-      const orders = response.data;
+  await fetch(hostname + "/hotels").then(response => response.json())
+  .then(data => saldo.textContent = 'R$ ' + data.details.bugetTotal.totalBudget)
 
-      document.querySelector("#reserva1").innerHTML = orders[0]["created_at"];
-    });
 }
 
-async function reserva2() {
+async function getLastBooks() {
   const hostname = "https://hurb-app.herokuapp.com";
 
-  await fetch(hostname + "/orders")
-    .then((res) => res.json())
-    .then((response) => {
-      const orders = response.data;
-
-      document.querySelector("#reserva2").innerHTML = orders[1]["created_at"];
-    });
+  const url = hostname + '/books/lasts/' + hotelId
+  var text = '';
+  await fetch(url)
+  .then(response => response.json())
+  .then(data => data.forEach(element => {
+    text += '<div class="item"></div>'
+      text += '<div></div>'
+      text += '<h6>' + element.ended + ' - R$' + element.value +  ',00</h6>'
+    
+      document.querySelector(".list").innerHTML = text;
+  }));
 }
-async function reserva3() {
-  const hostname = "https://hurb-app.herokuapp.com";
 
-  await fetch(hostname + "/orders")
-    .then((res) => res.json())
-    .then((response) => {
-      const orders = response.data;
-
-      document.querySelector("#reserva3").innerHTML = orders[2]["created_at"];
-    });
-}
-async function reserva4() {
-  const hostname = "https://hurb-app.herokuapp.com";
-
-  await fetch(hostname + "/orders")
-    .then((res) => res.json())
-    .then((response) => {
-      const orders = response.data;
-
-      document.querySelector("#reserva4").innerHTML = orders[3]["created_at"];
-    });
-}
+module.exports = {hotelId};

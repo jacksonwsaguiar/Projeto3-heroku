@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../global.styles.css" />
   </head>
   <body
-    onload="getData();getDataResponsiveTable(); getDataTable(); getDataHotels(); getBudgetHotels(); reserva1(); reserva2(); reserva3(); reserva4();"
+    onload="getData();getDataResponsiveTable(); getDataHotels(); getDataTableAll(); getBudgetHotelsAll()"
   >
     <div
       class="modal fade modal-introduction"
@@ -83,7 +83,7 @@
               data-bs-interval="false"
             >
               <div class="carousel-inner">
-                <div class="carousel-item active">
+                <!-- <div class="carousel-item active">
                   <h2>Para qual hotel você deseja solicitar?</h2>
                   <div class="list-hotels">
                     <div class="item">
@@ -99,67 +99,22 @@
                       <h6>Hotel A</h6>
                     </div>
                   </div>
-                </div>
-                <div class="carousel-item">
+                </div>-->
+                <div id="solicitationValue" class="carousel-item">
                   <h2>Quanto você deseja antecipar?</h2>
                   <h6 id="budget">
                     Valor disponivel para solicitação: 100.000,00
                   </h6>
                   <div class="flex-content">
                     <input
-                      style="border: none; width: 200px; font-size: 40px"
+                      style="border: none; width: 250px; font-size: 40px"
                       type="number"
                       placeholder="R$ 90.000"
                       id="valor"
                     />
                     <span>
-                      <p>Equivalente a 12 reservas</p>
+                      <p id="books">Equivalente a 12 reservas</p>
                       <div class="books-list">
-                        <div class="item">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-check-circle-fill"
-                            viewBox="0 0 16 16"
-                          >
-                            <path
-                              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
-                            />
-                          </svg>
-                          <h6>Reserva 1</h6>
-                        </div>
-                        <div class="item">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-check-circle-fill"
-                            viewBox="0 0 16 16"
-                          >
-                            <path
-                              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
-                            />
-                          </svg>
-                          <h6>Reserva 1</h6>
-                        </div>
-                        <div class="item">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-check-circle-fill"
-                            viewBox="0 0 16 16"
-                          >
-                            <path
-                              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
-                            />
-                          </svg>
-                          <h6>Reserva 1</h6>
-                        </div>
                       </div>
                     </span>
                   </div>
@@ -219,7 +174,7 @@
                       Lorem ipsum mattis porttitor eleifend tellus varius quam
                       pretium dolor porttitor hac convallis vitae curae morbi.
                     </p>
-                    <h5>Valor a receber dia 25/01/2023</h5>
+                    <h5 id="date">Valor a receber dia 25/01/2023</h5>
                     <h1 id="value">R$ 88.200,00</h1>
                   </div>
                 </div>
@@ -233,7 +188,7 @@
               class="btn btn-secondary next-button"
               data-bs-target="#carouselExampleControls"
               data-bs-slide="next"
-              onclick="getBudget()"
+              onclick = "D2(value); saveOrder()"
             >
               Avançar
             </button>
@@ -241,6 +196,7 @@
               type="button"
               class="btn btn-secondary"
               data-bs-dismiss="modal-solicitation"
+              onclick ="cancel()"
             >
               Cancelar
             </button>
@@ -291,7 +247,7 @@
           <h1 id="saldo">R$ 24.000,00</h1>
           <h5>Ultimas reservas</h5>
           <div class="list">
-            <div class="item">
+            <!--<div class="item">
               <div></div>
               <h6 id="reserva1">XX/XX/XXXX - XXXXXXX</h6>
             </div>
@@ -306,7 +262,7 @@
             <div class="item">
               <div></div>
               <h6 id="reserva4">XX/XX/XXXX - XXXXXXX</h6>
-            </div>
+            </div>-->
           </div>
         </div>
         <div class="custom-card col content">
@@ -318,9 +274,10 @@
             venenatis dui pellentesque, inceptos molestie dictumst.
           </div>
           <button
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-            onclick="getHotels()"
+            id="solicitation"
+            data-bs-toggle=""
+            data-bs-target=""
+            onclick="getHotels(); getBudget(); getValue(budget)"
           >
             Solicitar
           </button>
